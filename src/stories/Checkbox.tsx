@@ -1,4 +1,5 @@
 import { Checkbox as MuiCheckbox, FormControlLabel } from '@mui/material'
+import { useTheme } from '@mui/material'
 import React from 'react'
 
 export interface IProps{
@@ -9,13 +10,15 @@ export interface IProps{
 
 export const Checkbox = (props: IProps) => {
 
+    const theme = useTheme()
+
     return (
         <FormControlLabel 
             control={
                 <MuiCheckbox 
                     checked ={props.checked} 
                     onChange={(e) => props.setIsChecked(e.target.checked)} 
-                    sx={{color: '#616161', '& .MuiSvgIcon-root': {fontSize:'13.5px', } ,'&.Mui-checked':{color: '#21B6A8'}}}
+                    sx={{color: theme.palette.border.main , '& .MuiSvgIcon-root': {fontSize:'13.5px', } ,'&.Mui-checked':{color: theme.palette.primary.main}}}
                 />
             } 
             label={props.label} 
